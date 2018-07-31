@@ -4,7 +4,11 @@ import thunkMiddleware from 'redux-thunk';
 
 import todo, { ITodoState } from './Todo';
 
-const appReducer = combineReducers({
+export interface IRootState {
+    todo: ITodoState;
+}
+
+const appReducer = combineReducers<IRootState>({
     todo,
 });
 
@@ -20,8 +24,4 @@ export function initializeStore() {
         rootReducer,
         composeWithDevTools(applyMiddleware(thunkMiddleware)),
     );
-}
-
-export interface IStoreState {
-    todo: ITodoState;
 }

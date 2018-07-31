@@ -1,6 +1,9 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
 import './App.css';
 import Todo from './components/Todo';
+import { IRootState } from './store';
 
 class App extends React.Component {
     public render() {
@@ -15,4 +18,11 @@ class App extends React.Component {
     }
 }
 
-export default App;
+export default connect(
+    (state: IRootState): IRootState => {
+        return state;
+    },
+    (dispatch: Dispatch) => {
+        return {};
+    },
+)(App);
