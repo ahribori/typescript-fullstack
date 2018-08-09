@@ -1,5 +1,6 @@
 import * as Router from 'koa-router';
 import { printTodo } from '../service/todo';
+import { Todo } from '../types/todo'
 
 const router = new Router();
 
@@ -18,7 +19,7 @@ router.get('/:id', async (ctx) => {
 });
 
 router.post('/', async (ctx) => {
-    const payload = JSON.parse(JSON.stringify(ctx.request.body));
+    const payload = ctx.request.body as Todo;
     printTodo({
         id: 1,
         title: payload.title,
